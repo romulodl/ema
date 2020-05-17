@@ -1,5 +1,9 @@
 # Exponential Moving Average
 
+Calculate the EMA of giving values.
+
+![Ema](https://github.com/romulodl/ema/workflows/Ema/badge.svg)
+
 ## Instalation
 
 ```
@@ -39,4 +43,3 @@ accurate (at least closest to what Trading view shows.)
 
 The PECL Trading extension is crap and not everyone wants to install it.
 I am building a trading bot and building more complex trading indicators that use EMA as a basic step.
-I am also planning to open-source the other indicators (not the trading bot)
