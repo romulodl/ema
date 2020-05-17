@@ -13,4 +13,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: php-actions/composer@v1
     - name: run tests
-      run: vendor/bin/phpunit tests/*
+      run: vendor/bin/phpunit tests/* --testdox

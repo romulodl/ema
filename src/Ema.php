@@ -4,6 +4,8 @@ namespace Romulodl;
 
 class Ema
 {
+	private static $mult = null;
+
 	public function calculate(array $values, array $previous_values = []) : float
 	{
 		return self::calculate_ema($values, $previous_values);
@@ -27,7 +29,7 @@ class Ema
 			throw new \Exception('[' . __METHOD__ . '] $values parameters is empty');
 		}
 
-		$mult = 2 / (count($values) + 1);
+		self::$mult = self::$mult ?: 2 / (count($values) + 1);
 		$prev = false;
 		foreach ($values as $value) {
 			if ( !is_numeric($value)) {
@@ -39,7 +41,7 @@ class Ema
 				continue;
 			}
 
-			$prev = ($value - $prev) * $mult + $prev;
+			$prev = ($value - $prev) * self::$mult + $prev;
 		}
 
 		return $prev ?: 0;
