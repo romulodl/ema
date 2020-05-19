@@ -23,7 +23,6 @@ final class EmaTest extends TestCase
 
 		$ema = new Ema();
 		$this->assertSame(9288.86, round($ema->calculate($values), 2));
-		$this->assertSame(9288.86, round(Ema::calculateStatic($values), 2));
 	}
 
 	public function testCalculateEmaWithPreviousValues(): void
@@ -56,7 +55,6 @@ final class EmaTest extends TestCase
 
 		$ema = new Ema();
 		$this->assertSame(9197.01, round($ema->calculate($values, $previous_values), 2));
-		$this->assertSame(9197.01, round(Ema::calculateStatic($values, $previous_values), 2));
 	}
 
 	public function testCalculateEmaWithMorePreviousValues(): void
@@ -92,7 +90,6 @@ final class EmaTest extends TestCase
 
 		$ema = new Ema();
 		$this->assertSame(9182.18, round($ema->calculate($values, $previous_values), 2));
-		$this->assertSame(9182.18, round(Ema::calculateStatic($values, $previous_values), 2));
 	}
 
 	public function testCalculateEmaWithEmptyArray(): void
@@ -101,13 +98,6 @@ final class EmaTest extends TestCase
 
 		$ema = new Ema();
 		$ema->calculate([]);
-		Ema::calculateStatic([]);
-	}
-
-	public function testCalculateStaticEmaWithEmptyArray(): void
-	{
-		$this->expectException(Exception::class);
-		Ema::calculateStatic([]);
 	}
 
 	public function testCalculateEmaWithInvalidArray(): void
@@ -129,26 +119,5 @@ final class EmaTest extends TestCase
 
 		$ema = new Ema();
 		$ema->calculate($values);
-		Ema::calculateStatic($values);
-	}
-
-	public function testCalculateEmaStaticWithInvalidArray(): void
-	{
-		$values = [
-			9148.27,
-			9995,
-			9807.49,
-			'hahah',
-			8719.53,
-			8561.09,
-			8808.71,
-			9305.91,
-			9786.80,
-			9310.73
-		];
-
-		$this->expectException(Exception::class);
-
-		Ema::calculateStatic($values);
 	}
 }
