@@ -16,21 +16,14 @@ or add `romulodl/ema` to your `composer.json`. Please check the latest version i
 
 ```php
 $ema = new Romulodl\Ema();
-$ema->calculate(array $values, array $previous_values = []);
+$ema->calculate(array $values, int $period = 9);
 ```
 
 For example:
 ```php
 $ema = new Romulodl\Ema();
-$ema->calculate([10, 12, 14, 20, 14, 10, 11]);
+$ema->calculate([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
 ```
-
-#### What is `$previous_values` for?
-
-The EMA calculation is based on the previous round of calculation. The `n` round depends on `n - 1` result.
-Then what is `n - 1` for the first round? If `$previous_values` is not available, it uses a simple moving average
-for it. With `$previous_values` set, it will start the calculation of the EMA before and the result will be more
-accurate (at least closest to what TradingView shows.)
 
 ## Why did you do this?
 
