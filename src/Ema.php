@@ -18,24 +18,15 @@ class Ema
 		}
 
 		$mult = 2 / ($period + 1);
-		$prev_close = [];
-		$prev_ema = false;
+		$ema = 0;
 		foreach ($values as $value) {
 			if ( !is_numeric($value)) {
 				throw new \Exception('[' . __METHOD__ . '] invalid value: '. $value);
 			}
 
-			if (count($prev_close) < $period) {
-				$prev_close[] = $value;
-				if (count($prev_close) === $period) {
-					$prev_ema = array_sum($prev_close) / $period;
-				}
-				continue;
-			}
-
-			$prev_ema = ($value - $prev_ema) * $mult + $prev_ema;
+			$ema = ($value - $ema) * $mult + $ema;
 		}
 
-		return $prev_ema;
+		return $ema;
 	}
 }

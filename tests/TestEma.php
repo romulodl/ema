@@ -6,20 +6,7 @@ use Romulodl\Ema;
 
 final class EmaTest extends TestCase
 {
-	public function testCalculateEmaWithEmptyPreviousValues(): void
-	{
-		$val = require(__DIR__ . '/values.php');
-		$values = [];
-		foreach ($val as $v) {
-			$values[] = $v[2];
-		}
-		$values = array_slice($values, -9);
-
-		$ema = new Ema();
-		$this->assertSame(9147.33, round($ema->calculate($values), 2));
-	}
-
-	public function testCalculateEmaWithMorePreviousValues(): void
+	public function testCalculateWithMorePreviousValues(): void
 	{
 		$val = require(__DIR__ . '/values.php');
 		$values = [];
@@ -31,7 +18,7 @@ final class EmaTest extends TestCase
 		$this->assertSame(9101.36, round($ema->calculate($values), 2));
 	}
 
-	public function testCalculateEmaWithEmptyArray(): void
+	public function testCalculateWithEmptyArray(): void
 	{
 		$this->expectException(Exception::class);
 
@@ -39,7 +26,7 @@ final class EmaTest extends TestCase
 		$ema->calculate([]);
 	}
 
-	public function testCalculateEmaWithInvalidArray(): void
+	public function testCalculateWithInvalidArray(): void
 	{
 		$values = [
 			9148.27,
