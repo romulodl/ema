@@ -15,7 +15,7 @@ final class EmaTest extends TestCase
 		}
 
 		$ema = new Ema();
-		$this->assertSame(9101.36, round($ema->calculate($values), 2));
+		$this->assertSame(9101.36, round($ema->calculate($values)[0], 2));
 	}
 
 	public function testCalculateWithEmptyArray(): void

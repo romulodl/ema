@@ -16,7 +16,8 @@ or add `romulodl/ema` to your `composer.json`. Please check the latest version i
 
 ```php
 $ema = new Romulodl\Ema();
-$ema->calculate(array $values, int $period = 9);
+$values = $ema->calculate(array $values, int $period = 9);
+// return array, $values[0] being the last one
 ```
 
 For example:
